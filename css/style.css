@@ -1,0 +1,64 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#background {
+    width: 100%;
+    height: 100vh;
+    background: rgb(217,219,212);
+    background: linear-gradient(283deg, rgba(217,219,212,1) 0%, rgba(210,219,219,1) 35%, rgba(214,219,215,1) 86%);
+}
+
+header {
+    width: 100%;
+    height: 15vh;
+    background-color: #009988;
+}
+
+#interactive-box {
+    width: 80%;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+}
+
+.contact-box {
+    width: 50%;
+    padding: 20px 10px;
+}
+
+.user-data {
+    background-color: #eaeaea;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.image-profile {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0px 10px;
+}
+
+.image-profile img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-tools {
+    background-color: rgba(116,221,255,255) ;
+    padding: 10px 10px;
+    
+}
+
+
