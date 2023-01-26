@@ -13,36 +13,107 @@
         <div class="container" id="background">
           <header></header>
         </div>
+
         <div class="container" id="interactive-box">
-          <div class="contact-box">
-             <div class="user-data">
-                <div class="image-profile">
-                    <img src="img/avatar_io.jpg" >
+            <!-- BOX LEFT -->
+            <div class="box left">
+                <div class="user-data">
+                    <div class="image-profile">
+                        <img src="img/avatar_io.jpg" >
+                        <p>Sofia</p>
+                    </div>
+                
+                    <div class="icon-data">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
-                <p>Sofia</p>
-             </div>
-             <div class="user-tools">
-                <div class="notifications">
-                    <i class="fa-solid fa-bell-slash"></i>
-                    <h6>Ricevi notifiche di nuovi messaggi </h6>
-                    <a href="#">
-                        Attiva notifiche desktop
-                    </a>
+                <!-- USER TOOLS NOTIFICATION BAR-->
+                <div class="user-tools">
+                    <div class="notifications">
+                        <div class="icon">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+                        <div class="text">
+                            <h5>   Ricevi notifiche di nuovi messaggi </h5>
+                            <a class="link" href="#">Attiva notifiche desktop </a>
+                        </div>
+                    </div>
+                  </div>
+                    <!-- USER TOOLS SEARCH CHATBOX -->
+                  <div class="user-tools-search">
+                    <div class="search-chat">
+                        <div class="icon-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search-bar">
+                            <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </div>
+                  </div>
+                  <!-- LIST CONTACT -->
+                  <div class="contacts">
+                    <div class="contact" v-for="(contact, index) in contacts">
+                        <div class="image-profile">
+                            <img :src="`img/avatar${contact.avatar}.jpg`" alt="{{contact.name}}">
+                        </div>
+                        <div class="user-info">
+                            <h6>{{contact.name}}</h6>
+                            <p>Ultimo messaggio inviato</p>
+                        </div>
+                        <div class="date">
+                            <p>12.00</p>
+                        </div>
+                    </div>
+                  </div>    
+            </div>
+               <!-- BOX RIGHT -->
+            <div class="box right">
+                <div class="user-data">
+                    <div class="user-chatBox">
+                        <!--IMAGE PROFILE CHAT SCREEM-->
+                        <div class="image-profile">
+                           <img src="img/avatar_1.jpg" alt="">
+                        </div>
+                        <!-- USER INFO IN  CHAT BOX HEADER -->
+                        <div class="user-info">
+                           <h6>Michele</h6>
+                           <p>Ultimo messaggio inviato oggi alle 12.00</p>
+                        </div>
+                    </div>
+                    <!-- ICON HEADER CHAT SCREEN-->
+                    <div class="icon-data">
+                       <i class="fa-solid fa-search"></i>
+                       <i class="fa-solid fa-paperclip"></i>
+                       <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
-                <div class="search-chat">
-                    <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                <!-- START WINDOW CHAT-->
+                <div class="chat-screen">
+                    <div class="received"  >
+                        <p class="message" :class="status == sent"  v-for="(message, index) in contacts[active].messages" > {{ message.message}}</p>
+                    </div>  
+                    <div class="sent">
+                        <p class="message"></p>
+                        <p class="message"></p>
+                    </div>  
                 </div>
-             </div>
-             <div class="contacts">
-
-             </div>
-           
-    
-          </div>
-          <div class="chat-box">
-
-          </div>
+                <!-- FOOTER CHAT SCREEN-->
+                <div class="chat-text">
+                    <div class="icon smile">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <!-- INPUT FOR MESSAGE-->
+                    <div class="input-text">
+                        <input type="text" placeholder="Scrivi un messaggio">
+                    </div>
+                    <!-- VOCAL MESSAGE-->
+                    <div class="icon vocal-message">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
