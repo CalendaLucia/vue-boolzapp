@@ -54,7 +54,7 @@
                   </div>
                   <!-- LIST CONTACT -->
                   <div class="contacts">
-                    <div class="contact" v-for="(contact, index) in contacts">
+                    <div class="contact" v-for="(contact, index) in contacts" @click="showMessages(index)">
                         <div class="image-profile">
                             <img :src="`img/avatar${contact.avatar}.jpg`" alt="{{contact.name}}">
                         </div>
@@ -91,14 +91,13 @@
                 </div>
                 <!-- START WINDOW CHAT-->
                 <div class="chat-screen">
-                    <div class="received"  >
-                        <p class="message" :class="status == sent"  v-for="(message, index) in contacts[active].messages" > {{ message.message}}</p>
-                    </div>  
-                    <div class="sent">
-                        <p class="message"></p>
-                        <p class="message"></p>
-                    </div>  
+                    <div class="messages" v-for="(message, index) in contacts[active].messages">
+                        <p class="message" :class="{ sent: message.status === 'sent', received: message.status === 'received' }">
+                             {{ message.message}}  
+                        </p>
+                    </div>
                 </div>
+                
                 <!-- FOOTER CHAT SCREEN-->
                 <div class="chat-text">
                     <div class="icon smile">

@@ -160,14 +160,23 @@ const { createApp } = Vue
 
                     }     
                 ],
-            },
-
-
-
-
-            
+            },          
         ] 
       }
-    }
+    },
+    
+    computed: {
+        formattedDate() {
+            return this.date.substring(0, 10) + this.date.substring(11, 16)
+        }
+      },
+      methods: {
+       
+        showMessages(index) {
+            
+            this.active = index
+        }
+      },
+
   }).mount('#app')
 
