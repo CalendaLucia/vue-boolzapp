@@ -5,7 +5,11 @@ const { createApp } = Vue
       return {
 
         active: 0,
-        
+
+        newMessage:'',
+
+        search:'',
+
         contacts: [
 
             {
@@ -15,6 +19,7 @@ const { createApp } = Vue
                 messages: [
 
                     {
+                        id: 1,
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
@@ -33,6 +38,7 @@ const { createApp } = Vue
             },
 
             {
+                id: 2,
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
@@ -54,6 +60,7 @@ const { createApp } = Vue
                 ],
             },
             {
+                id: 3,
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
@@ -76,6 +83,7 @@ const { createApp } = Vue
             },
            
             {
+                id: 4,
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: true,
@@ -94,6 +102,7 @@ const { createApp } = Vue
             },
 
             {
+                id: 5,
                 name: 'Claudia',
                 avatar: '_6',
                 visible: true,
@@ -120,6 +129,7 @@ const { createApp } = Vue
             },
 
             {
+                id: 6,
                 name: 'Federico',
                 avatar: '_7',
                 visible: true,
@@ -138,6 +148,7 @@ const { createApp } = Vue
             },
 
             {
+                id: 7,
                 name: 'Davide',
                 avatar: '_8',
                 visible: true,
@@ -149,14 +160,14 @@ const { createApp } = Vue
                 }, {
                         date: '10/01/2020 15:50:00',
                         message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                         status: 'sent'
+                        status: 'sent'
 
                     },
                     
                     {
                         date: '10/01/2020 15:51:00',
                         message: 'Ok!!',
-                         status: 'receveid'
+                         status: 'received'
 
                     }     
                 ],
@@ -168,15 +179,60 @@ const { createApp } = Vue
     computed: {
         formattedDate() {
             return this.date.substring(0, 10) + this.date.substring(11, 16)
-        }
+        },
+
+        filteredContacts() {
+            return this.contacts.filter(contact => {
+              return contact.name.toLowerCase().includes(this.search.toLowerCase())
+            })
+          }
       },
+
       methods: {
        
         showMessages(index) {
             
             this.active = index
+        },
+
+        sendMessage() {
+            
+            const newObjetc = {
+
+                date: '10/01/2020 15:50:00',
+                message: this.newMessage,
+                status: 'sent'
+            };
+
+            this.contacts[this.active].messages.push(newObjetc);
+            this.newMessage = '';
+
+                 // INVIO RISPOSTA OK DOPO UN SECONDO
+                 setTimeout(() => {
+                    this.replyToMessage()
+                  }, 1000)
+        },
+
+        replyToMessage() {
+
+
+            const newReplyObject =   {
+
+                date: '10/01/2020 15:51:00',
+                message: 'Ok!!',
+                status: 'received'
+            };
+
+            this.contacts[this.active].messages.push(newReplyObject);
+
         }
+
       },
+
+      filterContacts() {
+    },
+
+    
 
   }).mount('#app')
 

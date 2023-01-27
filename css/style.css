@@ -139,6 +139,7 @@ header {
 
 .search-bar input {
     border: none;
+    padding: 10px 20px;
 }
 
 .contacts {
@@ -244,6 +245,10 @@ input::placeholder {
 }
 .messages .received .message-date {
     float: right;
+}
+
+.list-id {
+    display: none;
 }
 
 

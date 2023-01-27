@@ -48,7 +48,12 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="search-bar">
-                            <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" v-model="search" @input="filterContacts" placeholder="Cerca o inizia una nuova chat" >
+                            <ul class="list-id" >
+                                <li v-show="search == search" v-for="contact in filteredContacts" :key="contact.id">
+                                  {{ contact.name }}
+                                </li>
+                              </ul>
                         </div>
                     </div>
                   </div>
@@ -74,11 +79,11 @@
                     <div class="user-chatBox">
                         <!--IMAGE PROFILE CHAT SCREEM-->
                         <div class="image-profile">
-                           <img src="img/avatar_1.jpg" alt="">
+                           <img :src="`img/avatar${contacts[active].avatar}.jpg`" :alt="contacts[active].name">
                         </div>
                         <!-- USER INFO IN  CHAT BOX HEADER -->
                         <div class="user-info">
-                           <h6>Michele</h6>
+                           <h6>{{contacts[active].name}} </h6>
                            <p>Ultimo messaggio inviato oggi alle 12.00</p>
                         </div>
                     </div>
@@ -105,7 +110,7 @@
                     </div>
                     <!-- INPUT FOR MESSAGE-->
                     <div class="input-text">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input @keyup.enter = "sendMessage" type="text" placeholder="Scrivi un messaggio" v-model="newMessage">
                     </div>
                     <!-- VOCAL MESSAGE-->
                     <div class="icon vocal-message">
