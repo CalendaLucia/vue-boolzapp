@@ -47,14 +47,15 @@
                         <div class="icon-search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <div class="search-bar">
-                            <input type="text" v-model="search" @input="filterContacts" placeholder="Cerca o inizia una nuova chat" >
-                            <ul class="list-id" >
-                                <li v-show="search == search" v-for="contact in filteredContacts" :key="contact.id">
-                                  {{ contact.name }}
-                                </li>
-                              </ul>
-                        </div>
+                            <!-- INPUT SEARCH -->
+                            <div class="search-bar">
+                                <input v-model="inputValue" @input="getSuggestions" placeholder="Inserisci il nome">
+                                <ul class="list" v-show = "inputValue">
+                                  <li v-for="suggestion in suggestions" :key="suggestion.id" >
+                                    {{ suggestion.name }}
+                                  </li>
+                                </ul>
+                            </div>
                     </div>
                   </div>
                   <!-- LIST CONTACT -->

@@ -5,21 +5,20 @@ const { createApp } = Vue
       return {
 
         active: 0,
-
         newMessage:'',
-
-        search:'',
+        inputValue: '',
 
         contacts: [
 
             {
+                id: 1,
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
                 messages: [
 
                     {
-                        id: 1,
+                       
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
@@ -153,6 +152,7 @@ const { createApp } = Vue
                 avatar: '_8',
                 visible: true,
                 messages: [
+                    
                     {
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
@@ -175,19 +175,16 @@ const { createApp } = Vue
         ] 
       }
     },
-    
+
     computed: {
-        formattedDate() {
-            return this.date.substring(0, 10) + this.date.substring(11, 16)
+        
+        suggestions() {
+          return this.contacts.filter((contact) =>
+            contact.name.toLowerCase().startsWith(this.inputValue.toLowerCase())
+          );
         },
-
-        filteredContacts() {
-            return this.contacts.filter(contact => {
-              return contact.name.toLowerCase().includes(this.search.toLowerCase())
-            })
-          }
       },
-
+    
       methods: {
        
         showMessages(index) {
@@ -229,8 +226,10 @@ const { createApp } = Vue
 
       },
 
-      filterContacts() {
-    },
+      getSuggestions() {
+        this.suggestions;
+      },
+    
 
     
 
